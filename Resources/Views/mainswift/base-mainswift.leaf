@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    
+    <head>
+        <meta charset="utf-8">
+        <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0" name="viewport">
+        <title>main.swift</title>
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="/styles/podcast.css">
+        <link rel="icon" type="image/png" href="images/mainswift-favicon.png">
+        <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+          ga('create', 'UA-86902826-1', 'auto');
+          ga('send', 'pageview');
+        </script>
+        #import("head")
+    </head>
+
+    <body>
+        <header class="podcast-header">
+            <div class="container">
+                <a class="podcast-title" title="Tech" href="/mainswift">
+                    <img src="/images/mainswiftlogo500x500.png" alt="">
+                        </a>
+                <nav class="podcast-nav">
+                    <ul>
+                        <li><a class="podcast-nav-link nav-itunes hint--bottom hint--rounded" data-hint="Escúchanos en iTunes" target="_blank" href="#()">Escúchanos en iTunes</a></li>
+                        <li><a class="podcast-nav-link nav-email hint--bottom hint--rounded" data-hint="Escríbenos" target="_blank" href="mailto:jose.torres@santexgroup.com?Subject=Hola!">Escríbenos</a></li>
+                        <li><a class="podcast-nav-link nav-rss hint--bottom hint--rounded" data-hint="Suscríbete a nuestro RSS" target="_blank" href="#()">Suscríbete a nuestro RSS</a></li>
+                        <li><a class="podcast-nav-link nav-twitter hint--bottom hint--rounded" data-hint="Síguenos en Twitter" target="_blank" href="https://twitter.com/mainswiftFM">Síguenos en Twitter</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <section class="container podcast-main">
+            <div class="podcast-description">
+                <p>Podcast en español con episodios de conversaciones sobre las últimas novedades en el mundo tecnológico de una manera casual y simple. Además de episodios más técnicos sobre las últimas novedades en el desarrollo sobre las plataformas de Apple.</p>
+                <p>Dirigido por <a href="https://twitter.com/cocoaLima" target="_blank">@CocoaLima</a></p>
+            </div>
+            
+            #import("body")
+            
+            <div class="podcast-page-navigation">
+                <a href="/mainswift/episodes">Ver todo</a>
+            </div>
+        </section>
+        
+        <footer class="podcast-footer">
+            <div class="podcast-hosts">
+                <h2>Nuestros Hosts</h2>
+                
+                #loop(hosts, "host") {
+                <div class="podcast-host">
+                    <a class="podcast-host-avatar" href=#(host.url)>
+                        <img src=#(host.imageurl) alt="">
+                            </a>
+                    <h3 class="podcast-host-name">#(host.name)</h3>
+                </div>
+                }
+            </div>
+            <div class="general-footer">
+              <p>All rights reserved</p>
+              <p>Swift and the Swift logo are trademarks of Apple Inc.</p>
+              <p>www.cocoalima.com</p>
+              <span>
+                  with <i class="fa fa-heart pulse"></i> by <a href="https://twitter.com/coderpug" target="_blank"><img class="mini-coderpug" src="http://i.imgur.com/RLrIlsG.pnga"></a>
+              </span>
+            </div>    
+        </footer>
+    </body>
+    
+</html>

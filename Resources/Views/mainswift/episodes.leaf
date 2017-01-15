@@ -1,0 +1,26 @@
+#extend("mainswift/base-mainswift")
+
+#export("body") {
+
+    <div class="podcast-episodes">
+    #loop(episodes, "episode") {
+        <li class="podcast-episode">
+            <a class="podcast-episode-image" href="/mainswift/episodes/#(episode.id)">
+                <img src=#(episode.imageurl) alt="">
+            </a>
+            <article>
+                <header>
+                    <time class="podcast-episode-date" datetime="2016-10-10">#(episode.date)</time>
+                    <h3 class="podcast-episode-title">
+                <a href="/mainswift/episodes/#(episode.id)">#(episode.title)</a>
+                </h3>
+                </header>
+                <div class="podcast-episode-description">
+                    #raw(episode.shortdescription)
+                </div>
+            </article>
+        </li>
+    }
+    <div>
+
+}
