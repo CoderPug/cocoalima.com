@@ -5,6 +5,8 @@ import VaporPostgreSQL
 let drop = Droplet()
 
 try drop.addProvider(VaporPostgreSQL.Provider.self)
+drop.preparations.append(Episode.self)
+drop.preparations.append(Host.self)
 
 //  MARK: - Welcome
 
@@ -38,7 +40,14 @@ drop.get("mainswift/episodes") { request in
 
 drop.get("mainswift/episodes/", Int.self) { request, episodeId in
     
-    return try podcast.getEpisode(request)
+    return try podcast.getEpisode(episodeId, request)
+}
+
+//  MARK: Podcast-API
+
+drop.get("hosts") { request in
+    
+    return try JSON(node: Host.all())
 }
 
 drop.run()
