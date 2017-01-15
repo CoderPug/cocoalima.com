@@ -30,48 +30,11 @@ final class PodcastController {
         }
     }
     
+    /// Get homepage
     func getHome(_ request: Request) throws -> ResponseRepresentable {
         
-        var arrayEpisodes: [Node]?
-        do {
-            if let db = drop.database?.driver as? PostgreSQLDriver {
-                let resultArray = try db.raw("select * from episodes order by id desc limit 5")
-                arrayEpisodes = resultArray.nodeArray
-            } else {
-                arrayEpisodes = []
-            }
-        } catch {
-            print(error)
-            arrayEpisodes = []
-        }
+        let arguments = ["swiftLogoURL": "images/mainswiftlogo500x500.png"]
         
-//        var arrayHosts: [AnyObject]? = []
-        
-        let featuredEpisode: Node?
-        if arrayEpisodes != nil && arrayEpisodes!.count > 0 {
-            featuredEpisode = arrayEpisodes?.first
-            arrayEpisodes?.removeFirst()
-        } else {
-            featuredEpisode = nil
-        }
-        
-        var argument: [String: NodeRepresentable]
-        
-        if featuredEpisode != nil {
-            argument = [
-                "swiftLogoURL": "images/mainswiftlogo500x500.png",
-                "featuredEpisode": EmptyNode,
-                "episodes": EmptyNode,
-                "hosts": EmptyNode
-            ]
-        } else {
-            argument = [
-                "swiftLogoURL": "images/mainswiftlogo500x500.png",
-                "episodes": EmptyNode,
-                "hosts": EmptyNode
-            ]
-        }
-        
-        return try! drop.view.make("mainswift", argument)
+        return try drop.view.make("mainswift/mainswift", arguments)
     }
 }
