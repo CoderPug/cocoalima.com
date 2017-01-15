@@ -45,9 +45,32 @@ drop.get("mainswift/episodes/", Int.self) { request, episodeId in
 
 //  MARK: Podcast-API
 
-drop.get("hosts") { request in
+drop.group("podcast/api/v1") { v1 in
     
-    return try JSON(node: Host.all())
+    v1.get("hosts") { request in
+        
+        return try podcast.APIGetHosts(request)
+    }
+
+    v1.get("episodes") { request in
+        
+        return try podcast.APIGetEpisodes(request)
+    }
+    
+    v1.post("host") { request in
+        
+        return try podcast.APIPostHost(request)
+    }
+    
+    v1.post("episode") { request in
+        
+        return try podcast.APIGetEpisodes(request)
+    }
+    
+    v1.put("episode", Int.self) { request, episodeId in
+        
+        return try podcast.APIPutEpisode(episodeId, request)
+    }
 }
 
 drop.run()

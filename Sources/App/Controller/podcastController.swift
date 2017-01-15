@@ -121,4 +121,75 @@ final class PodcastController {
         return try drop.view.make("mainswift/episode", arguments)
     }
     
+    //  MARK: - API
+    
+    func APIGetHosts(_ request: Request) throws -> ResponseRepresentable {
+        
+        return try JSON(node: Host.all())
+    }
+    
+    func APIGetEpisodes(_ request: Request) throws -> ResponseRepresentable {
+        
+        return try JSON(node: Episode.all())
+    }
+    
+    func APIPostHost(_ request: Request) throws -> ResponseRepresentable {
+        
+        guard let name = request.data["name"]?.string,
+            let url = request.data["url"]?.string,
+            let imageURL = request.data["imageurl"]?.string else {
+                throw Abort.badRequest
+        }
+        
+        var host = Host(name: name, url: url, imageURL: imageURL)
+        
+        try host.save()
+        
+        return host
+    }
+    
+    func APIPostEpisode(_ request: Request) throws -> ResponseRepresentable {
+        
+        guard let title = request.data["title"]?.string,
+            let imageURL = request.data["imageurl"]?.string,
+            let audioURL = request.data["audiourl"]?.string,
+            let date = request.data["date"]?.string,
+            let shortDescription = request.data["shortdescription"]?.string,
+            let fullDescription = request.data["fulldescription"]?.string else {
+                throw Abort.badRequest
+        }
+        
+        var episode = Episode(title: title, shortDescription: shortDescription, fullDescription: fullDescription, imageURL: imageURL, audioURL: audioURL, date: date)
+        try episode.save()
+        
+        return episode
+    }
+    
+    func APIPutEpisode(_ episodeId: Int, _ request: Request) throws -> ResponseRepresentable {
+        
+        guard let title = request.data["title"]?.string,
+            let imageURL = request.data["imageurl"]?.string,
+            let audioURL = request.data["audiourl"]?.string,
+            let date = request.data["date"]?.string,
+            let shortDescription = request.data["shortdescription"]?.string,
+            let fullDescription = request.data["fulldescription"]?.string else {
+                throw Abort.badRequest
+        }
+        
+        var episode: Episode?
+        do {
+            episode = try Episode.find(episodeId)
+        } catch {
+            print(error)
+            episode = nil
+        }
+        
+        if episode != nil {
+            episode?.update(title: title, shortDescription: shortDescription, fullDescription: fullDescription, imageURL: imageURL, audioURL: audioURL, date: date)
+            try episode!.save()
+        }
+        
+        return episode ?? Episode()
+    }
+    
 }
