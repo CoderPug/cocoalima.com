@@ -1,5 +1,10 @@
 {
     "welcome": {
-    	"title": "Funciona."
+        "message": "We are setting everything up. Please come back soon !"
+    },
+    
+    "announcements": {
+        "mainswift": "listen our swift podcast in spanish",
+        "twitter": "follow us on twitter"
     }
 }
