@@ -1,12 +1,5 @@
 #extend("mainswift/base-mainswift")
 
-#export("head") {
-
-<link rel="stylesheet" type="text/css" href="styles/podcast.css">
-<link rel="icon" type="image/png" href="images/favicon.png">
-
-}
-
 #export("body") {
 
         <div class="podcast-episodes">

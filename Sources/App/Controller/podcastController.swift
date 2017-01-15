@@ -33,8 +33,18 @@ final class PodcastController {
     /// Get homepage
     func getHome(_ request: Request) throws -> ResponseRepresentable {
         
-        let arguments = ["swiftLogoURL": "images/mainswiftlogo500x500.png"]
+        return try drop.view.make("mainswift/mainswift")
+    }
+    
+    /// Get list of available episodes
+    func getEpisodes(_ request: Request) throws -> ResponseRepresentable {
         
-        return try drop.view.make("mainswift/mainswift", arguments)
+        return try drop.view.make("mainswift/episodes")
+    }
+    
+    /// Get a specific episode with id
+    func getEpisode(_ request: Request) throws -> ResponseRepresentable {
+        
+        return try drop.view.make("mainswift/episode")
     }
 }

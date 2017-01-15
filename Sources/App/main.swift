@@ -31,4 +31,14 @@ drop.get("mainswift") { request in
     return try podcast.getHome(request)
 }
 
+drop.get("mainswift/episodes") { request in
+    
+    return try podcast.getEpisodes(request)
+}
+
+drop.get("mainswift/episodes/", Int.self) { request, episodeId in
+    
+    return try podcast.getEpisode(request)
+}
+
 drop.run()
