@@ -5,6 +5,7 @@
         <meta charset="utf-8">
         <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0" name="viewport">
         <title>main.swift</title>
+        <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="/styles/podcast.css">
         <link rel="icon" type="image/png" href="images/mainswift-favicon.png">
@@ -30,7 +31,7 @@
         <section class="container podcast-main">
             <div class="podcast-description">
                 <p>Podcast en español con episodios de conversaciones sobre las últimas novedades en el mundo tecnológico de una manera casual y simple. Además de episodios más técnicos sobre las últimas novedades en el desarrollo sobre las plataformas de Apple.</p>
-                <p>Dirigido por <a href="https://twitter.com/cocoaLima">@CocoaLima</a></p>
+                <p>Dirigido por <a href="https://twitter.com/cocoaLima" target="_blank">@CocoaLima</a></p>
             </div>
             
             #import("body")
@@ -52,11 +53,15 @@
                     <h3 class="podcast-host-name">#(host.name)</h3>
                 </div>
                 }
-
-                <span class="podcast-simplecast-link">Made with&emsp;💜&emsp;in Swift + Vapor</span>
-                <span class="podcast-copyright">All rights reserved</span>
-                <span class="podcast-copyright">Swift and the Swift logo are trademarks of Apple Inc.</span>
             </div>
+            <div class="general-footer">
+              <p>All rights reserved</p>
+              <p>Swift and the Swift logo are trademarks of Apple Inc.</p>
+              <p>www.cocoalima.com</p>
+              <span>
+                  with <i class="fa fa-heart pulse"></i> by <a href="https://twitter.com/coderpug" target="_blank"><img class="mini-coderpug" src="http://i.imgur.com/RLrIlsG.pnga"></a>
+              </span>
+            </div>    
         </footer>
     </body>
     

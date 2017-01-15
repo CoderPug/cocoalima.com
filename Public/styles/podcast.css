@@ -1139,3 +1139,42 @@ audio {
     color: #444;
     border-color: #444
 }
+
+.general-footer {
+    color: #666;
+    font-size: 12px;
+}
+
+.general-footer span {
+    display: block;
+    bottom: 10px;
+    left: 50%;
+    bottom: auto;
+    right: auto;
+    text-align: center;
+}
+
+.general-footer a {
+    color: #5378b8;
+    text-decoration: none;
+}
+
+.general-footer span .fa {
+    color: #E90606;
+    margin: 0 3px;
+    font-size: 10px;
+    animation: pound 0.35s infinite alternate;
+    -webkit-animation: pound 0.35s infinite alternate;
+}
+
+@-webkit-keyframes pound {
+    to {
+        transform: scale(1.1);
+    }
+}
+
+@keyframes pound {
+    to {
+        transform: scale(1.1);
+    }
+}

@@ -12,6 +12,7 @@
 
     <footer>
         #import("footer")
+        <p>All rights reserved</p>
         <p>www.cocoalima.com</p>
         <span>
             with <i class="fa fa-heart pulse"></i> by <a href="https://twitter.com/coderpug" target="_blank"><img class="mini-coderpug" src="http://i.imgur.com/RLrIlsG.pnga"></a>
