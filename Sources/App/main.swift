@@ -64,7 +64,7 @@ drop.group("podcast/api/v1") { v1 in
     
     v1.post("episode") { request in
         
-        return try podcast.APIGetEpisodes(request)
+        return try podcast.APIPostEpisode(request)
     }
     
     v1.put("episode", Int.self) { request, episodeId in
