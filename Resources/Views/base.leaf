@@ -2,6 +2,7 @@
 <html>
 
     <head>
+        <link rel="icon" type="image/png" href="images/cocoalima-favicon.png">
         #import("head")
     </head>
 
