@@ -15,7 +15,8 @@ final class Host: Model {
     var name: String
     var url: String
     var imageURL: String
-    
+    var exists: Bool = false
+        
     init(name: String, url: String, imageURL: String) {
         self.name = name
         self.url = url

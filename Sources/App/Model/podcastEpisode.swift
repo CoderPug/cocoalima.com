@@ -18,6 +18,7 @@ final class Episode: Model {
     var audioURL: String
     var shortDescription: String
     var fullDescription: String
+    var exists: Bool = false
     
     init(title: String, shortDescription: String, fullDescription: String, imageURL: String, audioURL: String, date: String) {
         self.title = title
