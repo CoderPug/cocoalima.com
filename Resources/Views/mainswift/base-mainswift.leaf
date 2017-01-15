@@ -6,6 +6,8 @@
         <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0" name="viewport">
         <title>main.swift</title>
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="/styles/podcast.css">
+        <link rel="icon" type="image/png" href="images/favicon.png">
         #import("head")                    
     </head>
     
@@ -13,7 +15,7 @@
         <header class="podcast-header">
             <div class="container">
                 <a class="podcast-title" title="Tech" href="/mainswift">
-                    <img src=#(swiftLogoURL) alt="Twitter etc fmgs logo white">
+                    <img src="/images/mainswiftlogo500x500.png" alt="">
                         </a>
                 <nav class="podcast-nav">
                     <ul>
