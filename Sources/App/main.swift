@@ -1,6 +1,12 @@
+
 import Vapor
+import VaporPostgreSQL
 
 let drop = Droplet()
+
+try drop.addProvider(VaporPostgreSQL.Provider.self)
+
+//  MARK: - Welcome
 
 drop.get { req in
     return try drop.view.make("welcome", [
@@ -8,6 +14,21 @@ drop.get { req in
         "announcement-mainswift": drop.localization[req.lang, "announcements", "mainswift"],
         "announcement-twitter": drop.localization[req.lang, "announcements", "twitter"],
         ])
+}
+
+//  MARK: - Podcast
+
+let podcast = PodcastController()
+podcast.drop = drop
+
+drop.get("test-db-connection") { request in
+    
+    return try podcast.getDBVersion(request)
+}
+
+drop.get("mainswift") { request in
+    
+    return try podcast.getHome(request)
 }
 
 drop.run()

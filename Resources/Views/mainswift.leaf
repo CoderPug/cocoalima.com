@@ -1,0 +1,62 @@
+#extend("base")
+
+#export("head") {
+
+    <link rel="stylesheet" type="text/css" href="styles/app.css">
+    <link rel="icon" type="image/png" href="images/favicon.png">
+
+}
+
+#export("body") {
+
+<div class="podcast-episodes">
+#if(featuredEpisode) {
+        <li class="podcast-episode">
+            <a class="podcast-episode-image" href="mainswift/episodes/#(featuredEpisode.id)">
+                <img src=#(featuredEpisode.imageurl) alt="">
+            </a>
+            <article>
+                <header>
+                    <time class="podcast-episode-date" datetime="">#(featuredEpisode.date)</time>
+                    <h3 class="podcast-episode-title">
+                    <a href="mainswift/episodes/#(featuredEpisode.id)">#(featuredEpisode.title)</a>
+                    </h3>
+                </header>
+                <div class="podcast-episode-player">
+                    <audio controls>
+                        <source src=#(featuredEpisode.audiourl) type="audio/mpeg"> Your browser does not support the audio element.
+                    </audio>
+                </div>
+                <div class="podcast-episode-description">
+                  #raw(featuredEpisode.fulldescription)
+                </div>
+                <footer class="podcast-episode-footer">
+                    <a rel="nofollow" class="podcast-episode-download" download="" href=#(featuredEpisode.audiourl)>Descargar MP3</a>
+                </footer>
+            </article>
+        </li>
+}
+
+#if(episodes) {
+    #loop(episodes, "episode") {
+        <li class="podcast-episode">
+            <a class="podcast-episode-image" href="mainswift/episodes/#(episode.id)">
+                <img src=#(episode.imageurl) alt="">
+            </a>
+            <article>
+                <header>
+                    <time class="podcast-episode-date" datetime="2016-10-10">#(episode.date)</time>
+                    <h3 class="podcast-episode-title">
+                <a href="mainswift/episodes/#(episode.id)">#(episode.title)</a>
+                </h3>
+                </header>
+                <div class="podcast-episode-description">
+                    #raw(episode.shortdescription)
+                </div>
+            </article>
+        </li>
+    }
+}
+</div>
+
+}
