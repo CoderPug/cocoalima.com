@@ -1,0 +1,52 @@
+#extend("mainswift/base-mainswift")
+
+#export("body") {
+
+#if(episode) {
+    <div class="podcast-episodes">
+        <li class="podcast-episode">
+            <a class="podcast-episode-image" href="">
+                <img src=#(episode.imageurl) alt="">
+            </a>
+            <article>
+                <header>
+                    <time class="podcast-episode-date" datetime="">#(episode.date)</time>
+                    <h3 class="podcast-episode-title">
+                        <a>#(episode.title)</a>
+                    </h3>
+                </header>
+                <div class="podcast-episode-player">
+                    <audio controls>
+                        <source src="#(episode.audiourl)" type="audio/mpeg"> Your browser does not support the audio element.
+                    </audio>
+                </div>
+                <div class="podcast-episode-description">
+                    #raw(episode.fulldescription)
+                </div>
+                <footer class="podcast-episode-footer">
+                    <a rel="nofollow" class="podcast-episode-download" download="" href=#(episode.audiourl)>Descargar MP3</a>
+                </footer>
+            </article>
+        </li>
+    </div>
+
+    <div id="disqus_thread"></div>
+      <script>
+
+      var disqus_config = function () {
+      this.page.url = 'http://www.cocoalima.com/mainswift/episodes/#(episode.id)';
+      this.page.identifier = episode#(episode.id);
+      };
+
+      (function() {
+      var d = document, s = d.createElement('script');
+      s.src = '//mainswiftFM.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+      })();
+
+      </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+}
+
+}
