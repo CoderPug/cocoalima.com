@@ -158,6 +158,7 @@ final class PodcastController {
             "    <itunes:category text=\"Technology\">\n" +
             "      <itunes:category text=\"Tech News\"/>\n" +
             "    </itunes:category>\n" +
+            
             "    <item>\n" +
             "      <title>0: Presentación</title>\n" +
             "      <guid isPermaLink=\"false\">1d47c475-3913-4ef5-8231-aca0d26c54d9</guid>\n" +
@@ -176,6 +177,26 @@ final class PodcastController {
             "      <itunes:keywords></itunes:keywords>\n" +
             "      <itunes:explicit>no</itunes:explicit>\n" +
             "    </item>\n" +
+            
+            "    <item>\n" +
+            "      <title>1: Novedades tecnológicas</title>\n" +
+            "      <guid isPermaLink=\"false\">1d47c475-3913-4ef5-8231-aca0d26c5410</guid>\n" +
+            "      <description>Novedades en el mundo tecnológico durante la última semana. Google Pixel. Microsoft Surface Studio. Nueva vulnerabilidad en Windows 💀. Evento de Apple.</description>\n" +
+            "      <content:encoded>\n" +
+            "        <![CDATA[ <div> <p>Novedades en el mundo tecnológico durante la última semana. Google Pixel. Microsoft Surface Studio. Nueva vulnerabilidad en Windows 💀. Evento de Apple.</a></p> <h3>Temas</h3> <ul> <li><strong><a>00:13</a></strong> <a href=\"http://bgr.com/2016/10/27/pixel-vs-iphone-7-specs-performance-test-comparison/\">Google Pixel vs iPhone 7</a> </li> <li><strong><a>04:38</a></strong> <a href=\"http://www.xataka.com/ordenadores/nuevo-surface-studio-todo-el-atractivo-e-innovacion-de-surface-en-formato-todo-en-uno\">Microsoft Surface Studio</a> </li> <li><strong><a>13:00</a></strong> <a href=\"http://blog.ensilo.com/atombombing-a-code-injection-that-bypasses-current-security-solutions\">Windows AtomBombing ☠️</a> </li> <li><strong><a>15:33</a></strong> <a href=\"http://www.xataka.com/ordenadores/nuevo-macbook-pro-de-apple-adios-al-escape-hola-a-la-pantalla-secundaria-oled\">Evento de Apple</a> </li> </ul> </div> ]]>\n" +
+            "      </content:encoded>" +
+            "      <pubDate>Sun, 30 Oct 2016 05:00:00 -0800</pubDate>\n" +
+            "      <author>main.swift</author>\n" +
+            "      <enclosure url=\"https://s3-us-west-2.amazonaws.com/mainswift/mainswift2.mp3\" length=\"20589441\" type=\"audio/mpeg\"/>\n" +
+            "      <itunes:author>main.swift</itunes:author>\n" +
+            "      <itunes:image href=\"https://s3-us-west-2.amazonaws.com/mainswift/default.png\"/>\n" +
+            "      <itunes:duration>00:21:24</itunes:duration>\n" +
+            "      <itunes:summary>Novedades en el mundo tecnológico durante la última semana. Google Pixel. Microsoft Surface Studio. Nueva vulnerabilidad en Windows 💀. Evento de Apple.</itunes:summary>\n" +
+            "      <itunes:subtitle>Novedades en el mundo tecnológico durante la última semana. Google Pixel. Microsoft Surface Studio. Nueva vulnerabilidad en Windows 💀. Evento de Apple.</itunes:subtitle>\n" +
+            "      <itunes:keywords></itunes:keywords>\n" +
+            "      <itunes:explicit>no</itunes:explicit>\n" +
+            "    </item>\n" +
+            
             "  </channel>\n" +
             "</rss>")
         return xml
