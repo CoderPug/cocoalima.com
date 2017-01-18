@@ -121,6 +121,13 @@ final class PodcastController {
         return try drop.view.make("mainswift/episode", arguments)
     }
     
+    //  MARK: - RSS
+    
+    func getRSS(_ request: Request) throws -> ResponseRepresentable {
+        
+        return "Sample text"
+    }
+    
     //  MARK: - API
     
     func APIGetHosts(_ request: Request) throws -> ResponseRepresentable {
