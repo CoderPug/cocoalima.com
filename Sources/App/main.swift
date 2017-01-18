@@ -43,6 +43,13 @@ drop.get("mainswift/episodes/", Int.self) { request, episodeId in
     return try podcast.getEpisode(episodeId, request)
 }
 
+//  MARK: Podcast-RSS
+
+drop.get("mainswift/rss") { request in
+    
+    return try podcast.getRSS(request)
+}
+
 //  MARK: Podcast-API
 
 drop.group("podcast/api/v1") { v1 in
