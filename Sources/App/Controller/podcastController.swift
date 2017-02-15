@@ -35,13 +35,14 @@ final class PodcastController {
     /// Get homepage
     func getHome(_ request: Request) throws -> ResponseRepresentable {
         
-        var arrayEpisodes: [Node]?
+        var arrayEpisodes: [Episode]?
         
         do {
             
             if let db = drop.database?.driver as? PostgreSQLDriver {
                 let resultArray = try db.raw("select * from episodes order by id desc limit 5")
-                arrayEpisodes = resultArray.nodeArray
+                arrayEpisodes = resultArray.nodeArray?.flatMap { try? Episode(node: $0) }
+                
             } else {
                 arrayEpisodes = []
             }
@@ -55,7 +56,7 @@ final class PodcastController {
         var arrayHosts: [AnyObject]?
         arrayHosts = try? Host.all()
         
-        let featuredEpisode: Node?
+        let featuredEpisode: Episode?
         if arrayEpisodes != nil && arrayEpisodes!.count > 0 {
             featuredEpisode = arrayEpisodes?.first
             arrayEpisodes?.removeFirst()
@@ -67,7 +68,7 @@ final class PodcastController {
         
         if featuredEpisode != nil {
             arguments = [
-                "featuredEpisode": featuredEpisode ?? EmptyNode,
+                "featuredEpisode": try featuredEpisode?.makeNode() ?? EmptyNode,
                 "episodes": try arrayEpisodes?.makeNode() ?? EmptyNode,
                 "hosts": try (arrayHosts as? [Host])?.makeNode() ?? EmptyNode
             ]
@@ -208,11 +209,12 @@ final class PodcastController {
             let audioURL = request.data["audiourl"]?.string,
             let date = request.data["date"]?.string,
             let shortDescription = request.data["shortdescription"]?.string,
-            let fullDescription = request.data["fulldescription"]?.string else {
+            let fullDescription = request.data["fulldescription"]?.string,
+            let duration = request.data["duration"]?.int else {
                 throw Abort.badRequest
         }
         
-        var episode = Episode(title: title, shortDescription: shortDescription, fullDescription: fullDescription, imageURL: imageURL, audioURL: audioURL, date: date)
+        var episode = Episode(title: title, shortDescription: shortDescription, fullDescription: fullDescription, imageURL: imageURL, audioURL: audioURL, date: date, duration: duration)
         try episode.save()
         
         return episode
@@ -225,7 +227,8 @@ final class PodcastController {
             let audioURL = request.data["audiourl"]?.string,
             let date = request.data["date"]?.string,
             let shortDescription = request.data["shortdescription"]?.string,
-            let fullDescription = request.data["fulldescription"]?.string else {
+            let fullDescription = request.data["fulldescription"]?.string,
+            let duration = request.data["duration"]?.int else {
                 throw Abort.badRequest
         }
         
@@ -238,7 +241,7 @@ final class PodcastController {
         }
         
         if episode != nil {
-            episode?.update(title: title, shortDescription: shortDescription, fullDescription: fullDescription, imageURL: imageURL, audioURL: audioURL, date: date)
+            episode?.update(title: title, shortDescription: shortDescription, fullDescription: fullDescription, imageURL: imageURL, audioURL: audioURL, date: date, duration: duration)
             try episode!.save()
         }
         

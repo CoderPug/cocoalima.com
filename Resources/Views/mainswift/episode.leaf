@@ -10,7 +10,7 @@
             </a>
             <article>
                 <header>
-                    <time class="podcast-episode-date" datetime="">#(episode.date)</time>
+                    <time class="podcast-episode-date" datetime="">#(episode.formattedDate)</time>
                     <h3 class="podcast-episode-title">
                         <a>#(episode.title)</a>
                     </h3>
