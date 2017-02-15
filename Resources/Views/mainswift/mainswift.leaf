@@ -10,7 +10,7 @@
                         </a>
                 <article>
                     <header>
-                        <time class="podcast-episode-date" datetime="">#(featuredEpisode.date)</time>
+                        <time class="podcast-episode-date" datetime="">#(featuredEpisode.formattedDate)</time>
                         <h3 class="podcast-episode-title">
                             <a href="mainswift/episodes/#(featuredEpisode.id)">#(featuredEpisode.title)</a>
                         </h3>
@@ -38,7 +38,7 @@
                         </a>
                 <article>
                     <header>
-                        <time class="podcast-episode-date" datetime="2016-10-10">#(episode.date)</time>
+                        <time class="podcast-episode-date" datetime="">#(episode.formattedDate)</time>
                         <h3 class="podcast-episode-title">
                             <a href="mainswift/episodes/#(episode.id)">#(episode.title)</a>
                         </h3>
