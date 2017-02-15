@@ -88,6 +88,15 @@ final class PodcastController {
         var arrayEpisodes: [AnyObject]? = []
         arrayEpisodes = try? Episode.all()
         
+        arrayEpisodes?.sort(by: {
+
+            guard let a = $0 as? Episode,
+                let b = $1 as? Episode else {
+                    return false
+            }
+            return (a.id?.int ?? 0) > (b.id?.int ?? 0)
+        })
+        
         var arrayHosts: [AnyObject]? = []
         arrayHosts = try? Host.all()
         
@@ -130,6 +139,11 @@ final class PodcastController {
         
         var arrayEpisodes: [Episode]?
         arrayEpisodes = try? Episode.all()
+
+        arrayEpisodes?.sort(by: {
+            
+            return ($0.0.id?.int ?? 0) > ($0.1.id?.int ?? 0)
+        })
         
         var stringEpisodes = ""
         if let arrayEpisodes = arrayEpisodes {
@@ -184,7 +198,17 @@ final class PodcastController {
     
     func APIGetEpisodes(_ request: Request) throws -> ResponseRepresentable {
         
-        return try JSON(node: Episode.all())
+        var tarrayEpisodes: [Episode]?
+        tarrayEpisodes = try? Episode.all()
+        
+        guard var arrayEpisodes = tarrayEpisodes else {
+            
+            throw Abort.badRequest
+        }
+        
+        arrayEpisodes.sort(by: { return ($0.id?.int ?? 0) > ($1.id?.int ?? 0) })
+        
+        return try arrayEpisodes.makeJSON()
     }
     
     func APIPostHost(_ request: Request) throws -> ResponseRepresentable {
