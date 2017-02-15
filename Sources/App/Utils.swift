@@ -10,14 +10,14 @@ import Foundation
 
 extension String {
 
-    /// String date must be in the format yyyyMMdd
+    /// String date must be in the format yyyyMMdd HH:mm
     ///
     /// - Returns: String in the format requested
     public func formattedDate(with format: String) -> String {
         
         let formatter = DateFormatter()
-        formatter.dateFormat = "yyyyMMdd"
-        formatter.timeZone = TimeZone.current
+        formatter.dateFormat = "yyyyMMdd HH:mm"
+        formatter.timeZone = TimeZone(abbreviation: "UTC")
         
         guard let date = formatter.date(from: self) else {
             
