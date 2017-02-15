@@ -222,30 +222,51 @@ final class PodcastController {
     
     func APIPutEpisode(_ episodeId: Int, _ request: Request) throws -> ResponseRepresentable {
         
-        guard let title = request.data["title"]?.string,
-            let imageURL = request.data["imageurl"]?.string,
-            let audioURL = request.data["audiourl"]?.string,
-            let date = request.data["date"]?.string,
-            let shortDescription = request.data["shortdescription"]?.string,
-            let fullDescription = request.data["fulldescription"]?.string,
-            let duration = request.data["duration"]?.int else {
-                throw Abort.badRequest
-        }
+        var tepisode: Episode?
         
-        var episode: Episode?
         do {
-            episode = try Episode.find(episodeId)
+            tepisode = try Episode.find(episodeId)
         } catch {
             print(error)
-            episode = nil
+            tepisode = nil
         }
         
-        if episode != nil {
-            episode?.update(title: title, shortDescription: shortDescription, fullDescription: fullDescription, imageURL: imageURL, audioURL: audioURL, date: date, duration: duration)
-            try episode!.save()
+        guard var episode = tepisode else {
+            
+            throw Abort.badRequest
         }
         
-        return episode ?? Episode()
+        if let title = request.data["title"]?.string {
+            episode.title = title
+        }
+        
+        if let imageURL = request.data["imageurl"]?.string {
+            episode.imageURL = imageURL
+        }
+        
+        if let audioURL = request.data["audiourl"]?.string {
+            episode.audioURL = audioURL
+        }
+        
+        if let date = request.data["date"]?.string {
+            episode.date = date
+        }
+        
+        if let shortDescription = request.data["shortdescription"]?.string {
+            episode.shortDescription = shortDescription
+        }
+        
+        if let fullDescription = request.data["fulldescription"]?.string {
+            episode.fullDescription = fullDescription
+        }
+        
+        if let duration = request.data["duration"]?.int {
+            episode.duration = duration
+        }
+        
+        try episode.save()
+        
+        return episode
     }
     
 }
