@@ -165,12 +165,12 @@ final class PodcastController {
             "    <lastBuildDate>Mon, 05 Dec 2016 05:00:00 -0800</lastBuildDate>\n" +
             "    <link>http://cocoalima.com/mainswift</link>\n" +
             "    <image>\n" +
-            "      <url>http://www.cocoalima.com/images/mainswiftlogo500x500.png</url>\n" +
+            "      <url>https://s3-us-west-2.amazonaws.com/mainswift/mainswiftlogo1400x1400.png</url>\n" +
             "      <title>main.swift</title>\n" +
             "      <link>http://cocoalima.com/mainswift</link>\n" +
             "    </image>\n" +
             "    <itunes:author>main.swift</itunes:author>\n" +
-            "    <itunes:image href=\"http://www.cocoalima.com/images/mainswiftlogo500x500.png\"/>\n" +
+            "    <itunes:image href=\"https://s3-us-west-2.amazonaws.com/mainswift/mainswiftlogo1400x1400.png\"/>\n" +
             "    <itunes:summary>Podcast en español con episodios de conversaciones sobre las últimas novedades en el mundo tecnológico de una manera casual y simple. Además de episodios más técnicos sobre las últimas novedades en el desarrollo para las plataformas de Apple.</itunes:summary>\n" +
             "    <itunes:subtitle>Podcast en español sobre novedades en el mundo tecnológico y desarrollo con Swift.</itunes:subtitle>\n" +
             "    <itunes:explicit>no</itunes:explicit>\n" +
