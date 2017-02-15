@@ -125,13 +125,13 @@ extension RSSItem {
     init(_ episode: Episode) {
         
         self.title = episode.title
-        self.guid = "1234567890"
+        self.guid = episode.id?.string ?? ""
         self.description = episode.shortDescription
         self.content = episode.fullDescription
         self.pubDate = episode.date
         self.author = "main.swift"
-        self.imageURL = "https://s3-us-west-2.amazonaws.com/mainswift/default.png"
-        self.duration = "00:20:15"
-        self.enclosure = RSSItemEnclosure(url: "https://s3-us-west-2.amazonaws.com/mainswift/mainswift2.mp3", length: 1260, type: "audio/mpeg")
+        self.imageURL = episode.imageURL
+        self.duration = episode.formattedDuration
+        self.enclosure = RSSItemEnclosure(url: episode.audioURL, length: episode.duration, type: "audio/mpeg")
     }
 }

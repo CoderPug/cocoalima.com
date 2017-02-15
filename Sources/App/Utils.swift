@@ -45,3 +45,19 @@ extension String {
     }
     
 }
+
+extension Int {
+    
+    /// Convert seconds in formatted string
+    ///
+    /// - Returns: Formatted string like "h:m:s"
+    public func toDurationString() -> String {
+    
+        let h = self / 3600
+        let m = (self % 3600) / 60
+        let s = (self % 3600) % 60
+        
+        return String(format: "%02d:%02d:%02d", h,m,s)
+    }
+    
+}

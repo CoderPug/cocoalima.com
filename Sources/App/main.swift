@@ -33,6 +33,11 @@ drop.get("mainswift") { request in
     return try podcast.getHome(request)
 }
 
+drop.get("test", Int.self) { request, seconds in
+    
+    return seconds.toDurationString()
+}
+
 drop.get("mainswift/episodes") { request in
     
     return try podcast.getEpisodes(request)

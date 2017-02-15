@@ -209,11 +209,12 @@ final class PodcastController {
             let audioURL = request.data["audiourl"]?.string,
             let date = request.data["date"]?.string,
             let shortDescription = request.data["shortdescription"]?.string,
-            let fullDescription = request.data["fulldescription"]?.string else {
+            let fullDescription = request.data["fulldescription"]?.string,
+            let duration = request.data["duration"]?.int else {
                 throw Abort.badRequest
         }
         
-        var episode = Episode(title: title, shortDescription: shortDescription, fullDescription: fullDescription, imageURL: imageURL, audioURL: audioURL, date: date)
+        var episode = Episode(title: title, shortDescription: shortDescription, fullDescription: fullDescription, imageURL: imageURL, audioURL: audioURL, date: date, duration: duration)
         try episode.save()
         
         return episode
@@ -226,7 +227,8 @@ final class PodcastController {
             let audioURL = request.data["audiourl"]?.string,
             let date = request.data["date"]?.string,
             let shortDescription = request.data["shortdescription"]?.string,
-            let fullDescription = request.data["fulldescription"]?.string else {
+            let fullDescription = request.data["fulldescription"]?.string,
+            let duration = request.data["duration"]?.int else {
                 throw Abort.badRequest
         }
         
@@ -239,7 +241,7 @@ final class PodcastController {
         }
         
         if episode != nil {
-            episode?.update(title: title, shortDescription: shortDescription, fullDescription: fullDescription, imageURL: imageURL, audioURL: audioURL, date: date)
+            episode?.update(title: title, shortDescription: shortDescription, fullDescription: fullDescription, imageURL: imageURL, audioURL: audioURL, date: date, duration: duration)
             try episode!.save()
         }
         
