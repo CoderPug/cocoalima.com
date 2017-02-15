@@ -12,7 +12,10 @@ import Fluent
 final class Episode: Model {
     
     var id: Node?
+    /// Date format : YYYYMMdd
     var date: String
+    /// Date format : MMM d, yyyy
+    var formattedDate: String
     var title: String
     var imageURL: String
     var audioURL: String
@@ -27,6 +30,7 @@ final class Episode: Model {
         self.imageURL = imageURL
         self.audioURL = audioURL
         self.date = date
+        self.formattedDate = self.date.formattedDateB()
     }
     
     init(node: Node, in context: Context) throws {
@@ -37,6 +41,19 @@ final class Episode: Model {
         imageURL = try node.extract("imageurl")
         audioURL = try node.extract("audiourl")
         date = try node.extract("date")
+        formattedDate = date.formattedDateB()
+    }
+    
+    convenience init(node: Node) throws {
+        self.init()
+        id = try node.extract("id")
+        title = try node.extract("title")
+        shortDescription = try node.extract("shortdescription")
+        fullDescription = try node.extract("fulldescription")
+        imageURL = try node.extract("imageurl")
+        audioURL = try node.extract("audiourl")
+        date = try node.extract("date")
+        formattedDate = date.formattedDateB()
     }
     
     convenience init() {
@@ -52,6 +69,7 @@ final class Episode: Model {
             "date": date,
             "shortdescription": shortDescription,
             "fulldescription": fullDescription,
+            "formattedDate": date.formattedDateB()
         ])
     }
     
@@ -62,6 +80,7 @@ final class Episode: Model {
             episodes.string("imageurl")
             episodes.string("audiourl")
             episodes.string("date")
+            episodes.string("formattedDate")
             episodes.string("shortdescription")
             episodes.string("fulldescription", length: 3000)
         }
@@ -81,6 +100,7 @@ final class Episode: Model {
         self.imageURL = imageURL
         self.audioURL = audioURL
         self.date = date
+        self.formattedDate = self.date.formattedDateB()
     }
     
 }

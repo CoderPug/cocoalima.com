@@ -8,6 +8,8 @@
 
 import HTTP
 
+//  MARK: - XML
+
 public struct XML {
     public var content: String
     
@@ -45,7 +47,7 @@ extension XML: ResponseRepresentable {
     }
 }
 
-//  -
+//  MARK: - RSSItem
 
 struct RSSItem {
     
@@ -89,8 +91,8 @@ struct RSSItem {
         "      </content:encoded>\n"
     }
     
-    func getPubDate() -> String {
-        return "<pubDate>" + pubDate + "</pubDate>"
+    func getPubDate() -> String {       
+        return "<pubDate>" + pubDate.formattedDateA() + "</pubDate>"
     }
     
     func getAuthor() -> String {
@@ -98,7 +100,6 @@ struct RSSItem {
     }
     
     func representation() -> String {
-        
         return
             "    <item>\n" +
                 "      " + self.getTitleTag() + "\n" +
@@ -134,5 +135,3 @@ extension RSSItem {
         self.enclosure = RSSItemEnclosure(url: "https://s3-us-west-2.amazonaws.com/mainswift/mainswift2.mp3", length: 1260, type: "audio/mpeg")
     }
 }
-
-
